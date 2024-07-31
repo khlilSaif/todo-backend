@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 # Adjust the following PostgreSQL URL to match your database settings
-SQLALCHEMY_DATABASE_URL = "postgresql://postgres:samirsamir@localhost/sideProject"
+SQLALCHEMY_DATABASE_URL = "postgresql://postgres.ntruikamdpzxmwznolxy:sqifsq;irsq;irsqif@aws-0-eu-central-1.pooler.supabase.com:6543/postgres"
 
 # Create the SQLAlchemy engine
 engine = create_engine(

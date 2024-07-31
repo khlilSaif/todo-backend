@@ -10,4 +10,4 @@ class Task(Base):
     description = Column(String, nullable=True)
     blocked_task = Column(Integer, ForeignKey("task.id"), nullable=True)
     tag_id = Column(Integer, (ForeignKey("tag.id")) ,nullable=True)
-    completed = Column(Boolean, default= False, nullable= False)
+    completed = Column(Boolean, default= False, nullable= True)

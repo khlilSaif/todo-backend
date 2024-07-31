@@ -9,4 +9,4 @@ class Project(Base):
     user_id = Column(Integer, ForeignKey("users.id", ondelete='CASCADE'), nullable=False)
     name = Column(String, nullable=False)
     description = Column(String, nullable=True)
-    completed = Column(Boolean, default= False, nullable= False)
+    completed = Column(Boolean, default= False, nullable= True)

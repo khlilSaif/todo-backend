@@ -8,4 +8,4 @@ class Subtasks(Base):
     id = Column(Integer, primary_key=True, index=True, nullable=False)
     task_id = Column(Integer, ForeignKey("task.id", ondelete='CASCADE'), nullable=False)
     description = Column(String, nullable=False)
-    completed = Column(Boolean, default= False, nullable= False)
+    completed = Column(Boolean, default= False, nullable= True)
