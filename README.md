@@ -1,4 +1,4 @@
-Welcome to our project management application! This tool is designed to help you efficiently manage your projects and their associated tasks all in one place. Whether you are working on multiple projects simultaneousl our application aims to simplify that process.
+Welcome to my project management application! This tool is designed to help you efficiently manage your projects and their associated tasks all in one place. Whether you are working on multiple projects simultaneously my application aims to simplify that process.
 
 Key Features
 Project Management: Easily create, update, and delete projects. View all your projects at a glance and filter them by name.
