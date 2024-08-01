@@ -2,8 +2,6 @@
 /.vscode
 /venv
 
-env.py
-
 .env
 
 alembic.ini
