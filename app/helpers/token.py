@@ -1,11 +1,12 @@
 from datetime import datetime, timedelta
 from fastapi import HTTPException
 from jose import JWTError, jwt
+from dotenv import load_dotenv
+import os
 
-SECRET_KEY = "e514dac6502a94621003329eaf689659a79377c5e11ac80e8e1d8e3df6135e13"
-ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_DAYS = 3
-
+ACCESS_TOKEN_EXPIRE_DAYS = os.getenv("ACCESS_TOKEN_EXPIRE_DAYS")
+SECRET_KEY = os.getenv("SECRET_KEY")
+ALGORITHM = os.getenv("ALGORITHM")
 
 def create_access_token(data: dict):
     expires_delta = timedelta(days=ACCESS_TOKEN_EXPIRE_DAYS)

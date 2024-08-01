@@ -4,4 +4,6 @@
 
 env.py
 
+.env
+
 alembic.ini
