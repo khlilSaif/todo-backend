@@ -1,5 +1,4 @@
-About This Project
-Welcome to our project management application! This tool is designed to help you efficiently manage your projects and their associated tasks all in one place. Whether you are working on multiple projects simultaneously or need to allocate specific tasks to team members, our application aims to simplify that process.
+Welcome to our project management application! This tool is designed to help you efficiently manage your projects and their associated tasks all in one place. Whether you are working on multiple projects simultaneousl our application aims to simplify that process.
 
 Key Features
 Project Management: Easily create, update, and delete projects. View all your projects at a glance and filter them by name.
@@ -20,6 +19,6 @@ Get Started
 Login to your account and start managing your projects efficiently. For any assistance, feel free to reach out to me
 
 Contact Us
-If you have any questions or feedback, please contact us at saif.khlil.
+If you have any questions or feedback, please contact me 
 
 ![image](https://github.com/user-attachments/assets/ff946a49-c25d-4125-a2cf-d64ae1b5e4c1)
