@@ -5,6 +5,7 @@ from passlib.context import CryptContext
 from .. import schemas, models
 from ..database import get_db
 from .. import helpers
+import random
 
 router = APIRouter(
     tags= ["User"],
@@ -51,8 +52,6 @@ def login(user: schemas.UserIn, response: Response, db: Session = Depends(get_db
 def signup(user: schemas.UserIn, db: Session = Depends(get_db)):
     try: 
         username_in_db = db.query(models.User).filter(models.User.username == user.username).first()
-        print(user.username)
-        print(user.password)
         if username_in_db is not None:
             raise HTTPException(status_code=400, detail="Username already exists")
         hashed_password = pwd_context.hash(user.password)
@@ -65,3 +64,36 @@ def signup(user: schemas.UserIn, db: Session = Depends(get_db)):
     except Exception as error: 
         db.rollback()
         raise HTTPException(status_code=400, detail=str(error)) from error
+
+@router.post("/guest", response_model= schemas.UserLoginOut)
+def getGuest(response: Response, db: Session = Depends(get_db)):
+    try: 
+        number = generate_unique_guest_number()
+        user = schemas.UserIn(username=f"guest{number}", password="guest")
+        
+        hashed_password = pwd_context.hash(user.password)
+        user_to_add = models.User(**user.dict(exclude={"password"}), password=hashed_password)
+        db.add(user_to_add)
+        db.flush()
+        db.refresh(user_to_add)
+        access_token = helpers.token.create_access_token(data={"user_id": user_to_add.id, "iad": datetime.utcnow().timestamp()})
+        access_token_expires = timedelta(days=3)
+        
+        response.set_cookie(key="access_token", value=access_token, httponly=True, max_age=access_token_expires.total_seconds())
+        db.commit()
+
+        user_login_out = schemas.UserLoginOut(
+            access_token=access_token,
+            token_type="bearer",
+            message="Login successful",
+            status=200
+        )
+        return schemas.UserLoginOut(**user_login_out.dict())
+    except Exception as error: 
+        db.rollback()
+        getGuest()
+    
+
+def generate_unique_guest_number():
+    guest_number = random.randint(1000000000, 9999999999)  # Generate a 10-digit number
+    
