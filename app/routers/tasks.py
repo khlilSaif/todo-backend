@@ -134,6 +134,7 @@ async def update_task(task_request: schemas.taskUpdateInput, db: Session = Depen
         task.description = task_request.task.description
         task.completed = task_request.task.completed
         task.blocked_task = task_request.task.blocked_task
+        task.tag_id = task_request.task.tag_id
         if( task_request.task.blocked_task ):
             db.execute(
                 delete(models.TaskBlockers).where(and_(models.TaskBlockers.task_id == task.id, models.TaskBlockers.blocked_task_id == task_request.task.blocked_task))
